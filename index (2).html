@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Kehadiran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: url('kantor2.png') no-repeat center center;
+            background-size: cover;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+       
+        input, select, button {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Ganti URL di bawah dengan URL gambar yang sudah Anda konversi -->
+         <center> <img src="logodisduk.png" alt="Logo Perusahaan" width="300" height="auto" align="center">
+    </header>
+
+        
+        <h2>FORMULIR KEHADIRAN NON ASN </h2>
+        <form id="submit-form">
+            <input type="text" id="nama" name="nama" placeholder="Nama Lengkap" required>
+            <select id="jabatan" name="jabatan" required>
+                <option value="">--Pilih Jabatan--</option>
+                <option value="Tenaga Teknis Pelaksana Kegiatan">Tenaga Teknis Pelaksana Kegiatan</option>
+            </select>
+            <select id="unit_kerja" name="unit_kerja" required>
+                <option value="">--Pilih Unit Kerja--</option>
+                <option value="Sekretariat">Sekretariat</option>
+                <option value="Bidang PIAK">Bidang PIAK</option>
+                <option value="Bidang FPAK">Bidang FPAK</option>
+            </select>
+            <button type="submit">Kirim</button>
+        </form>
+    </div>
+
+
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw5Ynxgt-3Y31nt9lSIqUweW5SxcHsjonTP1B0xSuGZ0sQS8qE3i-Yqn4bC8hJfIjHy_w/exec'; // Ganti dengan URL Google Apps Script Anda
+        const form = document.forms['submit-form'];
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const formData = new FormData(form);
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => alert('Kehadiran berhasil disimpan!'))
+                .catch(error => alert('Error: ' + error.message));
+        });
+    </script>
+
+</body>
+</html>
